@@ -1,30 +1,33 @@
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList<Integer> list = new LinkedList<>();
+        LinkedList<String> list = new LinkedList<>();
+        QuickSort quickSort = new QuickSort();
 
-        list.addLast(1);
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
 
-        System.out.println(list.getSize());
+
+        list.add("A");
+        list.addLast("B");
+        list.addFirst("C");
+        list.addFirst("E");
+        list.add("F");
+        list.addFirst("G");
+        list.add("H");
+
         list.printList();
         System.out.println();
 
-        list.deleteElement(3);
-        list.printList();
-        System.out.println();
+        Object[] arrayList = list.toArray();
 
-        list.deleteElement(1);
-        list.addLast(99);
-        list.addLast(44);
-        list.addFirst(17);
-        list.printList();
-        System.out.println();
+        quickSort.sort(arrayList, Comparator.reverseOrder());
 
-        list.deleteElementByIndex(3);
-        list.printList();
+        for (Object o : arrayList ) {
+            System.out.print(o + " ");
+        }
+
+
+
 
     }
 }
