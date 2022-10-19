@@ -192,12 +192,12 @@ public class LinkedList<E> {
     }
 
     public Object[] toArray() {
-        Object[] res = new Object[size];
+        Object[] result = new Object[size];
         int i = 0;
         for (Node<E> node = firstNode; node != null; node = node.nextElement) {
-            res[i++] = node.currentElement;
+            result[i++] = node.currentElement;
         }
-        return res;
+        return result;
     }
 
     private class Node<E> {
