@@ -50,25 +50,10 @@ public class LinkedList<E> {
     }
 
     public E getElementByIndex(int index) {
-        if (!(index >=0 && index < size)) {
+        if (!(index >= 0 && index < size)) {
             throw new RuntimeException("No such element");
         } else {
             return node(index).currentElement;
-        }
-    }
-
-    private Node<E> node(int index) {
-
-        if (index <= size) {
-            Node<E> node = firstNode;
-            for (int i = 0; i < index; i++)
-                node = node.nextElement;
-            return node;
-        } else {
-            Node<E> node = lastNode;
-            for (int i = size - 1; i > index; i--)
-                node = node.prevElement;
-            return node;
         }
     }
 
@@ -114,6 +99,44 @@ public class LinkedList<E> {
         return delete(node(index));
     }
 
+    public void addElementByIndex(E e, int index) {
+        if (!(index >= 0 && index < size)) {
+            throw new RuntimeException("Out of bound");
+        } else {
+            if (index == size) {
+                addLast(e);
+            } else {
+                addBefore(e, node(index));
+            }
+        }
+    }
+
+    private void addBefore(E e, Node<E> node) {
+        Node<E> prevNode = node.prevElement;
+        Node<E> newNode = new Node<>(prevNode, e, node);
+        node.prevElement = newNode;
+        if (prevNode == null) {
+            firstNode = newNode;
+        } else {
+            prevNode.nextElement = newNode;
+        }
+        size++;
+    }
+
+    private Node<E> node(int index) {
+        if (index <= size) {
+            Node<E> node = firstNode;
+            for (int i = 0; i < index; i++)
+                node = node.nextElement;
+            return node;
+        } else {
+            Node<E> node = lastNode;
+            for (int i = size - 1; i > index; i--)
+                node = node.prevElement;
+            return node;
+        }
+    }
+
     private E delete(Node<E> node) {
         E e = node.currentElement;
         Node<E> next = node.nextElement;
@@ -150,7 +173,7 @@ public class LinkedList<E> {
         return size;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
@@ -175,7 +198,7 @@ public class LinkedList<E> {
     }
 
     public boolean contains(E e) {
-        return indexOf(e) >=0;
+        return indexOf(e) >= 0;
     }
 
     public void deleteAll() {
@@ -192,12 +215,12 @@ public class LinkedList<E> {
     }
 
     public Object[] toArray() {
-        Object[] res = new Object[size];
+        Object[] result = new Object[size];
         int i = 0;
         for (Node<E> node = firstNode; node != null; node = node.nextElement) {
-            res[i++] = node.currentElement;
+            result[i++] = node.currentElement;
         }
-        return res;
+        return result;
     }
 
     private class Node<E> {

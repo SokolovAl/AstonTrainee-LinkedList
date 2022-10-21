@@ -25,9 +25,5 @@ public class Main {
         for (Object o : arrayList ) {
             System.out.print(o + " ");
         }
-
-
-
-
     }
 }
