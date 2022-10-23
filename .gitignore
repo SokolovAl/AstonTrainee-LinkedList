@@ -4,6 +4,12 @@
 # Log file
 *.log
 
+
+# Iml file
+*.iml
+
+
+
 # BlueJ files
 *.ctxt
 
@@ -21,3 +27,16 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+
+# Default ignored files
+.idea/
+target/
+logs/
+out/
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
